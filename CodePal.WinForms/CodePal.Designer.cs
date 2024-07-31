@@ -120,7 +120,7 @@ namespace CodePal
             btnNewTask.UseVisualStyleBackColor = true;
             btnNewTask.Click += btnNewTask_Click;
             // 
-            // CodePal
+            // CodePal.WinForms
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
