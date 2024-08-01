@@ -2,8 +2,62 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:AvaloniaEdit="clr-namespace:AvaloniaEdit;assembly=AvaloniaEdit"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="CodePal.MainWindow"
-        Title="CodePal">
-    Welcome to Avalonia!
+        Title="Code Pal"
+        Width="750"
+        Height="350"
+        Background="#282828"
+        TransparencyLevelHint="Transparent"
+        TransparencyBackgroundFallback="#282828"
+        Opacity="0.8"
+        ExtendClientAreaToDecorationsHint="True">
+        
+    <Grid>
+        <Grid.ShowGridLines>True</Grid.ShowGridLines>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="5*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"></RowDefinition>
+            <RowDefinition Height="10*"></RowDefinition>
+            <RowDefinition Height="1*"></RowDefinition>
+        </Grid.RowDefinitions>
+        
+        <Label
+            Grid.Row="0"
+            Grid.Column="0"
+            Grid.ColumnSpan="2"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            FontSize="16"
+            FontWeight="SemiBold"
+            Foreground="White"
+            Content="Code Pal"/>
+        <AvaloniaEdit:TextEditor Grid.Column="1" Grid.Row="1" Name="Editor" Text="Hello AvaloniaEdit!"
+                                 ShowLineNumbers="True"
+                                 FontFamily="Cascadia Code,Consolas,Menlo,Monospace"/>
+        <Label
+            Grid.Column="1"
+            Grid.Row="2"
+            Content="Syntax Highlighting"
+            HorizontalContentAlignment="Left"
+            HorizontalAlignment="Right"
+            VerticalAlignment="Center"
+            Margin="10,0,70,0"
+            Foreground="White"/>
+        <ToggleSwitch
+            Grid.Column="1"
+            Grid.Row="2"
+            OnContent=""
+            OffContent=""
+            HorizontalContentAlignment="Left"
+            HorizontalAlignment="Right"
+            Margin="10,0,10,0"
+            Foreground="White"/>
+        
+    </Grid>
+
 </Window>
