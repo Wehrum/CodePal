@@ -3,6 +3,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:AvaloniaEdit="clr-namespace:AvaloniaEdit;assembly=AvaloniaEdit"
+        xmlns:codePal="clr-namespace:CodePal"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="CodePal.MainWindow"
         Title="Code Pal"
@@ -11,8 +12,9 @@
         Background="#282828"
         TransparencyLevelHint="Transparent"
         TransparencyBackgroundFallback="#282828"
-        Opacity="0.8"
-        ExtendClientAreaToDecorationsHint="True">
+        Opacity="{Binding WindowOpacity}"
+        ExtendClientAreaToDecorationsHint="True"
+        x:DataType="codePal:MainWindow">  <!-- Add this line here -->
         
     <Grid>
         <Grid.ShowGridLines>True</Grid.ShowGridLines>
@@ -42,11 +44,30 @@
         <Label
             Grid.Column="1"
             Grid.Row="2"
+            Content="Window Opacity"
+            HorizontalContentAlignment="Left"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            Margin="10,0,0,0"
+            Foreground="White"/>
+        <ComboBox
+            Grid.Column="1"
+            Grid.Row="2"
+            Name="OpacityComboBox"
+            HorizontalContentAlignment="Left"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            Margin="130,2,0,2"
+            />
+        
+        <Label
+            Grid.Column="1"
+            Grid.Row="2"
             Content="Syntax Highlighting"
             HorizontalContentAlignment="Left"
             HorizontalAlignment="Right"
             VerticalAlignment="Center"
-            Margin="10,0,70,0"
+            Margin="10,5,70,5"
             Foreground="White"/>
         <ToggleSwitch
             Grid.Column="1"

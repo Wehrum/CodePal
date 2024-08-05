@@ -1,4 +1,5 @@
 using System;
+using System.ComponentModel;
 using Avalonia.Controls;
 using Avalonia.Input;
 using Avalonia.Interactivity;
@@ -12,7 +13,7 @@ using CodePal.CodeEditor;
 
 namespace CodePal;
 
-public partial class MainWindow : Window
+public partial class MainWindow : Window, INotifyPropertyChanged
 {
     // Declarations to be used throughout the MainWindow class.
     private TextEditor _textEditor;
@@ -23,16 +24,39 @@ public partial class MainWindow : Window
     private bool IsHighlightingEnabled = true;
     private bool IsCodeFoldingEnabled = true;
     private bool IsBraceMatchingEnabled = true;
-
+    private ComboBox opacityComboBox;
+    private double windowOpacity = 0.8f;
     public MainWindow()
     {
         // Initializaition of components, editor, and main Event Handler for Syntax Highlighting toggle.
+        DataContext = this;
         InitializeComponent();
         InitializeEditor();
         ToggleSyntaxHighlighting.IsChecked = true; // Enable by default
         ToggleSyntaxHighlighting.IsCheckedChanged += ToggleSyntaxHighlighting_IsCheckedChanged;
+        opacityComboBox.ItemsSource = new string[] { "50%", "55%", "60%", "65%", "70%", "75%", "80%", "85%", "90%", "95%", "100%" };
+        opacityComboBox.SelectedIndex = 6;
     }
+    // PropertyChanged event for INotifyPropertyChanged
+    public event PropertyChangedEventHandler? PropertyChanged;
 
+    // Method to raise PropertyChanged event
+    protected void OnPropertyChanged(string name)
+    {
+        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+    }
+    public double WindowOpacity
+    {
+        get => windowOpacity;
+        set
+        {
+            if (windowOpacity != value)
+            {
+                windowOpacity = value;
+                OnPropertyChanged(nameof(WindowOpacity));
+            }
+        }
+    }
     private void InitializeEditor()
     {
         // Find the editor created in the window xaml.
@@ -53,6 +77,10 @@ public partial class MainWindow : Window
         _textEditor.TextChanged += OnTextChanged;
         // Handle the TextEntered even for enabling/disabling brace matching.
         _textEditor.TextArea.TextEntered += OnTextEntered;
+        
+        //
+        opacityComboBox = this.FindControl<ComboBox>("OpacityComboBox");
+        opacityComboBox.SelectionChanged += OpacitySelectionChanged;
     }
 
     // Event Handler for OnTextChanged
@@ -111,6 +139,46 @@ public partial class MainWindow : Window
             IsHighlightingEnabled = false;
             IsCodeFoldingEnabled = false;
             IsBraceMatchingEnabled = false;
+        }
+    }
+
+    private void OpacitySelectionChanged(object? sender, EventArgs e)
+    {
+        switch (opacityComboBox.SelectedIndex)
+        {
+            case 0:
+                WindowOpacity = 0.5f;
+                break;
+            case 1:
+                WindowOpacity = 0.55f;
+                break;
+            case 2:
+                WindowOpacity = 0.6f;
+                break;
+            case 3:
+                WindowOpacity = 0.65f;
+                break;
+            case 4:
+                WindowOpacity = 0.70f;
+                break;
+            case 5:
+                WindowOpacity = 0.75f;
+                break;
+            case 6:
+                WindowOpacity = 0.8f;
+                break;
+            case 7:
+                WindowOpacity = 0.85f;
+                break;
+            case 8:
+                WindowOpacity = 0.9f;
+                break;
+            case 9:
+                WindowOpacity = 0.95f;
+                break;
+            case 10:
+                WindowOpacity = 1.0f;
+                break;
         }
     }
 }
