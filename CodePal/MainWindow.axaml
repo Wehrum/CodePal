@@ -9,12 +9,13 @@
         Title="Code Pal"
         Width="750"
         Height="350"
+        Topmost="{Binding AlwaysOnTop}"
         Background="#282828"
         TransparencyLevelHint="Transparent"
         TransparencyBackgroundFallback="#282828"
         Opacity="{Binding WindowOpacity}"
         ExtendClientAreaToDecorationsHint="True"
-        x:DataType="codePal:MainWindow">  <!-- Add this line here -->
+        x:DataType="codePal:MainWindow">
         
     <Grid>
         <Grid.ShowGridLines>True</Grid.ShowGridLines>
@@ -44,6 +45,8 @@
         <Label
             Grid.Column="1"
             Grid.Row="2"
+            Name="WindowOpacityLabel"
+            FontSize="10"
             Content="Window Opacity"
             HorizontalContentAlignment="Left"
             HorizontalAlignment="Left"
@@ -54,30 +57,57 @@
             Grid.Column="1"
             Grid.Row="2"
             Name="OpacityComboBox"
+            FontSize="10"
             HorizontalContentAlignment="Left"
             HorizontalAlignment="Left"
             VerticalAlignment="Center"
-            Margin="130,2,0,2"
+            Margin="100,2,0,2"
             />
         
         <Label
             Grid.Column="1"
             Grid.Row="2"
+            Content="Always On Top"
+            Name="AlwaysOnTopLabel"
+            FontSize="10"
+            HorizontalContentAlignment="Left"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Margin="20,5,45,5"
+            Foreground="White"/>
+        <ToggleSwitch
+            Grid.Column="1"
+            Grid.Row="2"
+            Name="ToggleAlwaysOnTop"
+            FontSize="10"
+            OnContent=""
+            OffContent=""
+            HorizontalContentAlignment="Left"
+            HorizontalAlignment="Center"
+            Margin="120,0,10,0"
+            Foreground="White"/>
+        
+        <Label
+            Grid.Column="1"
+            Grid.Row="2"
             Content="Syntax Highlighting"
+            Name="SyntaxHighlightingLabel"
+            FontSize="10"
             HorizontalContentAlignment="Left"
             HorizontalAlignment="Right"
             VerticalAlignment="Center"
-            Margin="10,5,70,5"
+            Margin="10,5,60,5"
             Foreground="White"/>
         <ToggleSwitch
             Grid.Column="1"
             Grid.Row="2"
             Name="ToggleSyntaxHighlighting"
+            FontSize="10"
             OnContent=""
             OffContent=""
             HorizontalContentAlignment="Left"
             HorizontalAlignment="Right"
-            Margin="10,0,10,0"
+            Margin="5,0,5,0"
             Foreground="White"/>
         
     </Grid>

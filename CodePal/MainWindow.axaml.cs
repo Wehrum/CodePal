@@ -3,6 +3,7 @@ using System.ComponentModel;
 using Avalonia.Controls;
 using Avalonia.Input;
 using Avalonia.Interactivity;
+using Avalonia.Markup.Xaml.MarkupExtensions;
 using AvaloniaEdit;
 using AvaloniaEdit.Document;
 using AvaloniaEdit.Folding;
@@ -26,6 +27,7 @@ public partial class MainWindow : Window, INotifyPropertyChanged
     private bool IsBraceMatchingEnabled = true;
     private ComboBox opacityComboBox;
     private double windowOpacity = 0.8f;
+    private bool alwaysOnTop = true;
     public MainWindow()
     {
         // Initializaition of components, editor, and main Event Handler for Syntax Highlighting toggle.
@@ -36,27 +38,11 @@ public partial class MainWindow : Window, INotifyPropertyChanged
         ToggleSyntaxHighlighting.IsCheckedChanged += ToggleSyntaxHighlighting_IsCheckedChanged;
         opacityComboBox.ItemsSource = new string[] { "50%", "55%", "60%", "65%", "70%", "75%", "80%", "85%", "90%", "95%", "100%" };
         opacityComboBox.SelectedIndex = 6;
+        ToggleAlwaysOnTop.IsChecked = true;
+        ToggleAlwaysOnTop.IsCheckedChanged += ToggleAlwaysOnTop_IsCheckChanged;
     }
     // PropertyChanged event for INotifyPropertyChanged
     public event PropertyChangedEventHandler? PropertyChanged;
-
-    // Method to raise PropertyChanged event
-    protected void OnPropertyChanged(string name)
-    {
-        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
-    }
-    public double WindowOpacity
-    {
-        get => windowOpacity;
-        set
-        {
-            if (windowOpacity != value)
-            {
-                windowOpacity = value;
-                OnPropertyChanged(nameof(WindowOpacity));
-            }
-        }
-    }
     private void InitializeEditor()
     {
         // Find the editor created in the window xaml.
@@ -81,6 +67,9 @@ public partial class MainWindow : Window, INotifyPropertyChanged
         //
         opacityComboBox = this.FindControl<ComboBox>("OpacityComboBox");
         opacityComboBox.SelectionChanged += OpacitySelectionChanged;
+        
+        //
+
     }
 
     // Event Handler for OnTextChanged
@@ -141,7 +130,23 @@ public partial class MainWindow : Window, INotifyPropertyChanged
             IsBraceMatchingEnabled = false;
         }
     }
-
+    // Method to raise PropertyChanged event
+    protected void OnPropertyChanged(string name)
+    {
+        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+    }
+    public double WindowOpacity
+    {
+        get => windowOpacity;
+        set
+        {
+            if (windowOpacity != value)
+            {
+                windowOpacity = value;
+                OnPropertyChanged(nameof(WindowOpacity));
+            }
+        }
+    }
     private void OpacitySelectionChanged(object? sender, EventArgs e)
     {
         switch (opacityComboBox.SelectedIndex)
@@ -179,6 +184,30 @@ public partial class MainWindow : Window, INotifyPropertyChanged
             case 10:
                 WindowOpacity = 1.0f;
                 break;
+        }
+    }
+
+    public bool AlwaysOnTop
+    {
+        get => alwaysOnTop;
+        set
+        {
+            if (alwaysOnTop != value)
+            {
+                alwaysOnTop = value;
+                OnPropertyChanged(nameof(AlwaysOnTop));
+            }
+        }
+    }
+    private void ToggleAlwaysOnTop_IsCheckChanged(object? sender, EventArgs e)
+    {
+        if (AlwaysOnTop)
+        {
+            AlwaysOnTop = false;
+        }
+        else
+        {
+            AlwaysOnTop = true;
         }
     }
 }
