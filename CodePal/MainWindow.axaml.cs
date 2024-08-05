@@ -1,11 +1,9 @@
 using System;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using Avalonia.Controls;
 using Avalonia.Input;
-using Avalonia.Interactivity;
-using Avalonia.Markup.Xaml.MarkupExtensions;
 using AvaloniaEdit;
-using AvaloniaEdit.Document;
 using AvaloniaEdit.Folding;
 using AvaloniaEdit.Indentation.CSharp;
 using AvaloniaEdit.TextMate;
@@ -16,6 +14,8 @@ namespace CodePal;
 
 public partial class MainWindow : Window, INotifyPropertyChanged
 {
+
+    
     // Declarations to be used throughout the MainWindow class.
     private TextEditor _textEditor;
     private RegistryOptions _registryOptions;
@@ -28,12 +28,16 @@ public partial class MainWindow : Window, INotifyPropertyChanged
     private ComboBox opacityComboBox;
     private double windowOpacity = 0.8f;
     private bool alwaysOnTop = true;
+    
+    public TaskManager.TaskManager TaskManager { get; set; }
     public MainWindow()
     {
-        // Initializaition of components, editor, and main Event Handler for Syntax Highlighting toggle.
+        // Initialization of components, editor, and main Event Handler for Syntax Highlighting toggle.
         DataContext = this;
         InitializeComponent();
         InitializeEditor();
+        TaskManager = new TaskManager.TaskManager();
+        TaskListGrid.DataContext = TaskManager;
         ToggleSyntaxHighlighting.IsChecked = true; // Enable by default
         ToggleSyntaxHighlighting.IsCheckedChanged += ToggleSyntaxHighlighting_IsCheckedChanged;
         opacityComboBox.ItemsSource = new string[] { "50%", "55%", "60%", "65%", "70%", "75%", "80%", "85%", "90%", "95%", "100%" };
@@ -210,4 +214,6 @@ public partial class MainWindow : Window, INotifyPropertyChanged
             AlwaysOnTop = true;
         }
     }
+    
+
 }
