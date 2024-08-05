@@ -36,7 +36,7 @@
             FontWeight="SemiBold"
             Foreground="White"
             Content="Code Pal"/>
-        <AvaloniaEdit:TextEditor Grid.Column="1" Grid.Row="1" Name="Editor" Text="Hello AvaloniaEdit!"
+        <AvaloniaEdit:TextEditor Grid.Column="1" Grid.Row="1" Name="Editor" Text="Welcome to Code Pal!!"
                                  ShowLineNumbers="True"
                                  FontFamily="Cascadia Code,Consolas,Menlo,Monospace"/>
         <Label
@@ -51,6 +51,7 @@
         <ToggleSwitch
             Grid.Column="1"
             Grid.Row="2"
+            Name="ToggleSyntaxHighlighting"
             OnContent=""
             OffContent=""
             HorizontalContentAlignment="Left"
