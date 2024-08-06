@@ -5,18 +5,17 @@ Code Pal is a utility application written in C# designed to help developers with
 
 ## Features
 
-- Always on top
-- Translucency
-- Click n Drag from form body
-- Dynimcally creatted Task Lists/ToDos
-- Auto spacing of Task Lists/ToDos
-- Auto Expanding/Collapsing of Task Lists/ToDos
-- Create multiple Task Lists/ToDos
-- Code Editor with Togglable Syntax HighLighting
-- Code Folding
-- Brace Matching
-- Auto Spacing
-- Auto Indentation
+- Toggleable Syntax Highlighting
+- Toggleable Always On Top propery
+- Adjustible Opacity
+- Code Editor - Code Folding
+- Code Editor - Auto Indentation
+- Code Editor - Brace Matching
+- Create Task Items
+- Delete Task Items
+- Mark Task Items Complete
+- Responsive Resizable Window
+- Cross Compatibility (Windows, macOS, Linux)
 
 
 ### Syntax HighLighting Supported Languages
@@ -25,21 +24,24 @@ Code Pal is a utility application written in C# designed to help developers with
 
 ### Future Features
 
-- Save/Load Task Lists/ToDos to/from JSON file
-- Save/Load Pseudocode to/from JSON file
+- Save/Load Tasks
+- Save/Load Code Editor content
+- Export Code Editor to user selected file format
 - Add Syntax Highlighting for more languages
 - Support in-app Syntax Highlighting theme changes/modifications
-- Toggles for specific features ie. Enable/Disable Brace Matching etc
-- User determined opacity
-- Responsive/Resizable form
-- Export Code Editor to user selected file format.
+- (* Implemented *) Toggles for specific features ie. Enable/Disable Brace Matching etc
+- (* Implemented *) User determined opacity
+- (* Implemented *) Responsive/Resizable form.
 
 
 ## Screenshots
 
-![App Screenshot](https://i.imgur.com/8oeC3XY.png)
+![App Screenshot](https://i.imgur.com/8wBXokf.png)
 
+## Changelog
+August 6th, 2024 - Code Pal has been updated to use AvaloniaUI instead of WinForms. This update aimed to provide not only cross compatibility, but also a modern UI that allows for the utilization of modern features natively.
 
-## Acknowledgements
+## Acknowledgements / Technologies
 
- - [Scintilla.NET](https://github.com/desjarlais/Scintilla.NET)
+ - AvaloniaUI
+ - AvaloniaEdit
