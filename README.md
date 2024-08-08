@@ -7,7 +7,7 @@ Code Pal is a utility application written in C# designed to help developers with
 
 - Toggleable Syntax Highlighting
 - Toggleable Always On Top propery
-- Adjustible Opacity
+- Adjustable Opacity
 - Code Editor - Code Folding
 - Code Editor - Auto Indentation
 - Code Editor - Brace Matching
@@ -16,7 +16,6 @@ Code Pal is a utility application written in C# designed to help developers with
 - Mark Task Items Complete
 - Responsive Resizable Window
 - Cross Compatibility (Windows, macOS, Linux)
-
 
 ### Syntax HighLighting Supported Languages
 
@@ -33,15 +32,15 @@ Code Pal is a utility application written in C# designed to help developers with
 - (* Implemented *) User determined opacity
 - (* Implemented *) Responsive/Resizable form.
 
-
 ## Screenshots
 
-![App Screenshot](https://i.imgur.com/8wBXokf.png)
+![App Screenshot](./docs/images/code_pal.png)
 
 ## Changelog
+
 August 6th, 2024 - Code Pal has been updated to use AvaloniaUI instead of WinForms. This update aimed to provide not only cross compatibility, but also a modern UI that allows for the utilization of modern features natively.
 
 ## Acknowledgements / Technologies
 
- - AvaloniaUI
- - AvaloniaEdit
+- AvaloniaUI
+- AvaloniaEdit
